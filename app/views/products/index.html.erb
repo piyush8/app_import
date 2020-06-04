@@ -1,0 +1,21 @@
+<%= form_tag({action: :import}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag( "Import" ) %>
+<% end %>
+
+<% if @products.present? %>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Material Code</th>
+			<th>Product Category Code</th>
+			<th>Status</th>
+		</tr>
+		<tbody>
+			<%= render partial: "product_data", collection: @products, as: :product %>
+		</tbody>
+	</table>
+<% else %>
+	<span>Products Data not Found</span>
+<% end %>
